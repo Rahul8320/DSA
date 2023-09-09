@@ -1,6 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
+	==== Best Approach ====
+	TC: O(n)
+	SC: O(1)
+*/
 int solve(int arr[], int n){
 	int mini = arr[0];
 	int maxProfit = 0;
