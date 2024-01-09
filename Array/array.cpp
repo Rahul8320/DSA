@@ -11,14 +11,33 @@ private:
     int *ptr;
 
 public:
+    Array();
+    Array(int cap);
     void createArray(int);
     void insertInArray(int, int);
     void appendInArray(int);
     void deleteFromArray(int);
 };
 
+Array::Array()
+{
+    ptr = nullptr;
+}
+
+Array::Array(int cap)
+{
+    capacity = cap;
+    lastIndex = -1;
+    int *ptr = new int[cap];
+}
+
 void Array::createArray(int cap)
 {
+    if (ptr != nullptr)
+    {
+        delete[] ptr;
+    }
+
     capacity = cap;
     lastIndex = -1;
     int *ptr = new int[cap];
