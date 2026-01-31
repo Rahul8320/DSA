@@ -99,6 +99,73 @@ class SingleLinkedList:
             curr = curr.next
         print(f"Key {key} is not found in the linked list")
 
+    def delete_end_node(self) -> None:
+        """
+        Delete end node from the linked list
+
+        :param self: Reference of the linked list object
+        """
+        # If linked list is empty
+        if self.head is None:
+            print("Linked list is empty!")
+            return
+
+        # If only one node is there
+        if self.head.next is None:
+            self.head = None
+            return
+
+        curr = self.head
+        while curr.next is not None and curr.next.next is not None:
+            curr = curr.next
+        curr.next = None
+
+    def delete_start_node(self) -> None:
+        """
+        Delete start node from the linked list
+
+        :param self: Reference of the linked list object
+        """
+        # If linked list is empty
+        if self.head is None:
+            print("Linked list is empty!")
+            return
+
+        # If only one node is there
+        if self.head.next is None:
+            self.head = None
+            return
+
+        self.head = self.head.next
+
+    def delete_node(self, key: int) -> None:
+        """
+        Delete key value node from the linked list
+
+        :param self: Reference of the linked list object
+        :param key: Key value which node will be deleted
+        :type key: int
+        """
+
+        # If linked list is empty
+        if self.head is None:
+            print("Linked List is empty!")
+            return
+
+        curr = self.head
+        prev = self.head
+        while curr is not None:
+            if self.head.data == key:
+                self.head = self.head.next
+                return
+            if curr.data == key:
+                prev.next = curr.next
+                curr.next = None
+                return
+            prev = curr
+            curr = curr.next
+        print(f"Key {key} is not found in the linked list")
+
     def traverse(self) -> None:
         """
         Traverse the linked list
@@ -145,15 +212,10 @@ if __name__ == "__main__":
     ll = SingleLinkedList()
     ll.insert_at_end(20)
     ll.insert_at_end(30)
-    ll.insert_at_start(15)
-    ll.traverse()
-
     ll.insert_at_start(10)
-    ll.insert_after(20, 25)
     ll.traverse()
 
-    ll.insert_at_start(5)
-    ll.insert_at_end(35)
+    ll.delete_node(20)
     ll.traverse()
-
-    ll.search(30)
+    ll.delete_node(10)
+    ll.traverse()
